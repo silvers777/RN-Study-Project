@@ -1,0 +1,72 @@
+{
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/react",
+    "import/errors",
+    "import/warnings",
+    "eslint:recommended",
+    "requirejs/recommended",
+    "plugin:react/recommended"
+  ],
+  "rules": {
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "trailingComma": "es5",
+        "singleQuote": true,
+        "printWidth": 100
+      }
+    ],
+    "react-native/no-unused-styles": 2,
+    "react-native/split-platform-components": 2,
+    "react-native/no-inline-styles": 2,
+    "react-native/no-color-literals": 2,
+    "react-native/no-raw-text": 2,
+    "react-native/no-single-element-style-arrays": 2,
+    "requirejs/no-invalid-define": 2,
+    "requirejs/no-multiple-define": 2,
+    "requirejs/no-named-define": 2,
+    "requirejs/no-commonjs-wrapper": 2,
+    "requirejs/no-object-define": 1,
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "import/no-unresolved": [2, {
+      "commonjs": true,
+      "amd": true
+    }],
+    "import/named": 2,
+    "import/namespace": 2,
+    "import/default": 2,
+    "import/export": 2,
+    "global-require": 0
+  },
+  "plugins": [
+    "prettier",
+    "react",
+    "react-native",
+    "import",
+    "requirejs"
+  ],
+  "env": {
+    "react-native/react-native": true,
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true,
+    "classes": true,
+    "es6": true
+  }
+}
