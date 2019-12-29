@@ -16,8 +16,8 @@ CreateScreen.navigationOptions = ({ navigation }) => ({
   headerLeft: (
     <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
       <Item
-        title="Toggle Drawer"
-        iconName="ios-menu"
+        title='Toggle Drawer'
+        iconName='ios-menu'
         onPress={() => navigation.toggleDrawer()}
       />
     </HeaderButtons>

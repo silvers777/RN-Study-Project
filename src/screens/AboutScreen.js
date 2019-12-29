@@ -6,7 +6,7 @@ import { AppHeaderIcon } from '../components/AppHeaderIcon'
 export const AboutScreen = ({}) => {
   return (
     <View style={styles.center}>
-      <Text>Это лучше приложение для личных заметок</Text>
+      <Text>Это лучшее приложение для личных заметок.</Text>
       <Text>
         Версия приложения <Text style={styles.version}>1.0.0</Text>
       </Text>
@@ -19,8 +19,8 @@ AboutScreen.navigationOptions = ({ navigation }) => ({
   headerLeft: (
     <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
       <Item
-        title="Toggle Drawer"
-        iconName="ios-menu"
+        title='Toggle Drawer'
+        iconName='ios-menu'
         onPress={() => navigation.toggleDrawer()}
       />
     </HeaderButtons>
@@ -33,5 +33,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  version: { fontWeight: '600' }
+  version: {
+    fontFamily: 'open-bold'
+  }
 })
