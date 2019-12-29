@@ -11,15 +11,16 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { Item, HeaderButtons } from 'react-navigation-header-buttons'
 import { AppHeaderIcon } from '../components/AppHeaderIcon'
-import { DATA } from '../data'
 import { THEME } from '../theme'
-import { toogleBooked } from '../store/actions/post'
+import { toogleBooked, removePost } from '../store/actions/post'
 
 export const PostScreen = ({ navigation }) => {
   const dispatch = useDispatch()
   const postId = navigation.getParam('postId')
 
-  const post = DATA.find(p => p.id === postId)
+  const post = useSelector(state =>
+    state.post.allPosts.find(p => p.id === postId)
+  )
 
   const booked = useSelector(state =>
     state.post.bookedPosts.some(post => post.id === postId)
@@ -46,10 +47,21 @@ export const PostScreen = ({ navigation }) => {
           text: 'Отменить',
           style: 'cancel'
         },
-        { text: 'Удалить', style: 'destructive', onPress: () => {} }
+        {
+          text: 'Удалить',
+          style: 'destructive',
+          onPress() {
+            navigation.navigate('Main')
+            dispatch(removePost(postId))
+          }
+        }
       ],
       { cancelable: false }
     )
+  }
+
+  if (!post) {
+    return null
   }
 
   return (
@@ -59,7 +71,7 @@ export const PostScreen = ({ navigation }) => {
         <Text style={styles.title}>{post.text}</Text>
       </View>
       <Button
-        title='Удалить'
+        title="Удалить"
         color={THEME.DANGER_COLOR}
         onPress={removeHandler}
       />
@@ -76,7 +88,7 @@ PostScreen.navigationOptions = ({ navigation }) => {
     headerTitle: 'Пост от ' + new Date(date).toLocaleDateString(),
     headerRight: (
       <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-        <Item title='Take photo' iconName={iconName} onPress={toggleHandler} />
+        <Item title="Take photo" iconName={iconName} onPress={toggleHandler} />
       </HeaderButtons>
     )
   }
