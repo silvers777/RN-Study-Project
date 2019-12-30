@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, StyleSheet, Button, Image, Alert } from 'react-native'
 import * as ImagePicker from 'expo-image-picker'
 import * as Permissions from 'expo-permissions'
@@ -15,7 +15,7 @@ async function askForPermissions() {
   return true
 }
 
-export const PhotoPicker = ({}) => {
+export const PhotoPicker = ({ onPick }) => {
   const [image, setImage] = useState(null)
 
   const takePhoto = async () => {
@@ -30,7 +30,8 @@ export const PhotoPicker = ({}) => {
       allowsEditing: false,
       aspect: [16, 9]
     })
-    console.log(img)
+    setImage(img.uri)
+    onPick(img.uri)
   }
 
   return (
