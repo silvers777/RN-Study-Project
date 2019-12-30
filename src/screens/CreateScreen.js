@@ -15,6 +15,7 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 import { AppHeaderIcon } from '../components/AppHeaderIcon'
 import { THEME } from '../theme'
 import { addPost } from '../store/actions/post'
+import { PhotoPicker } from '../components/PhotoPicker'
 
 export const CreateScreen = ({ navigation }) => {
   const dispatch = useDispatch()
@@ -37,7 +38,7 @@ export const CreateScreen = ({ navigation }) => {
     <ScrollView>
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss}>
         <View style={styles.wrapper}>
-          <Text style={styles.title}>Создай новый пост</Text>
+          <Text style={styles.title}> Создай новый пост </Text>
           <TextInput
             style={styles.textarea}
             placeholder="Введите текс заметки"
@@ -45,12 +46,7 @@ export const CreateScreen = ({ navigation }) => {
             onChangeText={setText}
             multiline
           />
-          <Image
-            style={{ width: '100%', height: 200, marginBottom: 10 }}
-            source={{
-              uri: img
-            }}
-          />
+          <PhotoPicker />
           <Button
             title="Создать пост"
             color={THEME.MAIN_COLOR}
